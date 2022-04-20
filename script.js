@@ -1,11 +1,12 @@
 let resetButton = document.querySelector('div.reset button');
-let playerScore = document.querySelector('.playerScore');
-let computerScore = document.querySelector('.computerScore');
+let playerScore = document.querySelector('.playerScoreNumber');
+let computerScore = document.querySelector('.computerScoreNumber');
+let instructions = document.querySelector('.instructions');
 
 let allButtons = document.querySelectorAll('div.buttons button');
 
 allButtons.forEach(button => {
-    button.addEventListener('click', testCycle)});
+    button.addEventListener('click', playerSelect)});
 
 resetButton.addEventListener('click', resetGame);
 
@@ -30,18 +31,16 @@ function playRound(playerSelection, computerSelection){
     computerSelection = computerPlay();
     
      if (playerSelection === computerSelection){
-         console.log("Tie!");
+         instructions.textContent = `Tie!`;
     }
     else if (computerSelection == "Scissors" && playerSelection == "Paper" || computerSelection == "Paper" && playerSelection == "Rock" || computerSelection == "Rock" && playerSelection == "Scissors"){
         computerCount++;
-        console.log(computerSelection);
-        console.log(`Player loses the round! ${computerSelection} beats ${playerSelection.toLowerCase()}!`);    
-        computerScore.textContent = computerCount;
+        instructions.textContent = `Player loses the round! ${computerSelection} beats ${playerSelection.toLowerCase()}!`;    
+        computerScore.textContent = `${computerCount}`;
     } else {
         playerCount++;
-        console.log(playerSelection);
-        console.log(`Player wins the round! ${playerSelection} beats ${computerSelection.toLowerCase()}!`);   
-        playerScore.textContent = playerCount;
+        instructions.textContent = `Player wins the round! ${playerSelection} beats ${computerSelection.toLowerCase()}!`;   
+        playerScore.textContent = `${playerCount}`;
     }
     game();   
 }
@@ -49,10 +48,10 @@ function playRound(playerSelection, computerSelection){
 function game(){
      if (computerCount === 5 || playerCount === 5){
          if (computerCount > playerCount){
-            console.log("Computer wins this game, Too bad!");
+            instructions.textContent = `Computer wins the game, too bad!`;
             disableButtons();
          } else {
-        console.log("Player wins the game! Nice job!");
+        instructions.textContent = `Player wins the game! Nice job!`;
         disableButtons();
      }
     }
@@ -60,7 +59,7 @@ function game(){
 
 // ui section
 
-function testCycle(e){
+function playerSelect(e){
 let playerSelection = e.target.textContent;
 playerHand = e.target.textContent;
 playRound(playerSelection, computerPlay())
@@ -68,7 +67,7 @@ playRound(playerSelection, computerPlay())
 
 function disableButtons(){
     allButtons.forEach(button => {
-        button.removeEventListener('click', testCycle)});
+        button.removeEventListener('click', playerSelect)});
 }
 
 function resetGame(){
@@ -76,12 +75,3 @@ function resetGame(){
 }
 
 
-// set up div with winning round/game messages
-
-// what i learned: the importance of anonymous functions vs named functions. the disableButtons function is one that not 
-// work on anonymous functions, so i had to find a way to loop through my buttons instead of having them 
-// all separated like i did originally
-
-// how to reset a game through a button on the page
-
-// how to deal with buttons doing different things once a win condition is met 

@@ -1,0 +1,56 @@
+body{
+    background-color: #EDE6DB;
+    margin: 0; 
+    padding: 0;  
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #EDE6DB
+}
+
+p{
+    color: #1A3C40;
+}
+
+header{
+    background-color: #1D5C63 ;
+    margin: 10px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 5px;
+}
+
+
+.scores{
+    border: 2px solid goldenrod;
+    display: flex;
+    justify-content: center;
+    background-color: #417D7A;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.playerScore, .computerScore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid goldenrod;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+}
+
+button{
+    padding: 20px;
+    background-color: #1A3C40;
+    color: #EDE6DB;
+    margin: 10px;
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+    
+}
+
